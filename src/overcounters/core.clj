@@ -2,7 +2,11 @@
 
 (use 'overtone.live)
 
-(def closenotes [:G4 :A4 :F4 :F3 :C4])
+(defn n 
+  ([note-name duration] {:pitch (note->hz note-name) :duration duration})
+  ([note-name] (n note-name 1)))
+
+(def closenotes [(n :G4) (n :A4) (n :F4) (n :F3) (n :C4 2)])
 
 (defn note->hz [music-note] (midi->hz(note music-note))) 
 
@@ -25,8 +29,8 @@
 ;  then repeats.
 (defn play [nome notes]    
   (let [beat (nome)]
-       (doseq [[i n] (iseq notes)]
-              (at (nome (+ i beat)) (saw-wave n)))
+       (doseq [[i {duration :duration pitch :pitch}] (iseq notes)]
+              (at (nome (+ i beat)) (saw-wave-inst pitch)))
        (apply-at (nome (+ (count notes) beat 1))
                  play nome notes [])))
 
