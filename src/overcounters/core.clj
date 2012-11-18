@@ -15,13 +15,10 @@
 
 (def one-twenty-bpm (metronome 120))
 
-(defn play [notes] 
-  (if-let [[n & ns] (seq notes)] 
-          (do 
-              (print n) 
-              (recur ns)))
-  )
-
+; (play nome note-seq)
+;  plays each note of note-seq on each beat of nome, 
+;  waits a beat,
+;  then repeats.
 (defn play 
   ([nome seq] (play nome seq seq))
   ([nome cur-seq whole-seq]    
