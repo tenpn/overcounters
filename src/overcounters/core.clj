@@ -4,3 +4,13 @@
 
 (def closenotes [:G4 :A5 :F4 :F3 :C4])
 
+(defn note->hz [music-note] (midi->hz(note music-note))) 
+
+(definst saw-wave-inst [freq 440 attack 0.01 sustain 0.4 release 0.1 vol 0.4] 
+  (* (env-gen (lin-env attack sustain release) 1 1 0 1 FREE)
+     (saw freq)
+     vol))
+
+(defn saw-wave [note-name] (saw-wave-inst (note->hz note-name)))
+
+(stop)
