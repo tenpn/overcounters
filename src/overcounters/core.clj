@@ -13,4 +13,23 @@
 
 (defn saw-wave [note-name] (saw-wave-inst (note->hz note-name)))
 
+(def one-twenty-bpm (metronome 120))
+
+(defn play [notes] 
+  (if-let [[n & ns] (seq notes)] 
+          (do 
+              (print n) 
+              (recur ns)))
+  )
+
+(defn play 
+  ([nome seq] (play nome seq seq))
+  ([nome cur-seq whole-seq]    
+         (let [beat (nome)]
+              (if-let [[n & ns] (seq cur-seq)]
+                      (do (at (nome beat) (saw-wave n))
+                          (apply-at (nome (inc beat)) 
+                                    play nome ns whole-seq []))
+                      (apply-at (nome (inc beat))
+                                play nome whole-seq whole-seq [])))))
 (stop)
