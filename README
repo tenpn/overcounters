@@ -1,10 +1,18 @@
 # overcounters
 
-FIXME: write description
+Whenever I play with a new synth, I mess around with the Close Encounters music: G4 A5 F4 F3 C4.
+
+Doing the same thing with the Overtone synth interface for Clojure. Except now I can write something that generates music using that progression!
 
 ## Usage
 
-FIXME: write
+brew install leiningen
+
+cd overcounters
+
+lein repl
+
+(use 'overcounters.core)
 
 ## License
 
