@@ -15,6 +15,7 @@
 
 (def one-twenty-bpm (metronome 120))
 
+; indexed sequence. [a b c] becomes [[0 a] [1 b] [2 c]]
 (defn iseq [seq] 
      (map-indexed (fn [i d] [i d]) seq))
 
