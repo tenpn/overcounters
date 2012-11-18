@@ -6,9 +6,11 @@ Doing the same thing with the Overtone synth interface for Clojure. Except now I
 
 ## Usage
 
-brew install leiningen
+brew install leiningen // first time only
 
 cd overcounters
+
+lein deps // first time only
 
 lein repl
 
