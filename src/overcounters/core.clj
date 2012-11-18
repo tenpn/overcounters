@@ -2,7 +2,7 @@
 
 (use 'overtone.live)
 
-(def closenotes [:G4 :A5 :F4 :F3 :C4])
+(def closenotes [:G4 :A4 :F4 :F3 :C4])
 
 (defn note->hz [music-note] (midi->hz(note music-note))) 
 
