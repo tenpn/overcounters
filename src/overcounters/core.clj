@@ -33,9 +33,11 @@
 ;  waits a beat,
 ;  then repeats.
 (defn play [nome notes]    
-  (let [beat (nome)]
-       (doseq [[i {duration :duration pitch :pitch}] (iseq notes)]
-              (at (nome (+ i beat)) (saw-wave-inst pitch)))
+  (let [beat (nome) bps (/ (metro-bpm nome) 60)]
+       (doseq [[i {beat-duration :duration pitch :pitch}] (iseq notes)]
+              (let [time-duration (* beat-duration bps)]
+                   (at (nome (+ i beat)) 
+                       (trem :freq pitch :length time-duration))))
        (apply-at (nome (+ (count notes) beat 1))
                  play nome notes [])))
 
