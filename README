@@ -1,14 +1,16 @@
 # overcounters
 
-Whenever I play with a new synth, I mess around with the Close Encounters music: G4 A5 F4 F3 C4.
+Whenever I play with a new synth, I mess around with the Close Encounters music: G4 A4 F4 F3 C4.
 
 Doing the same thing with the Overtone synth interface for Clojure. Except now I can write something that generates music using that progression!
 
 ## Usage
 
-brew install leiningen
+brew install leiningen // first time only
 
 cd overcounters
+
+lein deps // first time only
 
 lein repl
 
